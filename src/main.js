@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import App from './modules/App'
+import App from './components/App'
 import reactor from './reactor'
 import actions from './modules/product/actions'
 import CartStore from './modules/cart/CartStore'

@@ -1,5 +1,5 @@
 import { Store, toImmutable } from 'nuclear-js'
-import { RECEIVE_PRODUCTS, ADD_TO_CART } from '../actionTypes'
+import { RECEIVE_PRODUCTS } from '../actionTypes'
 
 export default Store({
   getInitialState() {
@@ -8,7 +8,6 @@ export default Store({
 
   initialize() {
     this.on(RECEIVE_PRODUCTS, receiveProducts)
-    this.on(ADD_TO_CART, addToCart)
   }
 })
 
@@ -18,12 +17,4 @@ function receiveProducts(state, { products }) {
     .mapKeys((k, v) => v.get('id'))
 
   return state.merge(newProducts)
-}
-
-function addToCart(state, { product }) {
-  return state.update(product.id, product => {
-    const currentInventory = product.get('inventory')
-    const newInventory = (currentInventory > 0) ? currentInventory - 1 : 0;
-    return product.set('inventory', newInventory);
-  })
 }

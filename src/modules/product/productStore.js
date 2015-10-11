@@ -3,7 +3,7 @@ import { RECEIVE_PRODUCTS, ADD_TO_CART } from '../actionTypes'
 
 export default Store({
   getInitialState() {
-    return toImmutable();
+    return toImmutable({})
   },
 
   initialize() {
